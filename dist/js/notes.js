@@ -47,4 +47,4 @@
     axios.get(API_URL_BASE).then(handleGetResponse);
   }
 })();
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=notes.js.map
