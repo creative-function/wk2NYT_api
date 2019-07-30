@@ -23,11 +23,26 @@ TABLE OF CONTENTS:
 	box-sizing: border-box;
 }
 
-body {
-	background: #ccc;
+
+#search-results{
+
+	p{
+		margin-top:2%;
+	}
+	.flex-title{
+		margin-top:2%;
+		h1{
+			font-size: 2em;
+		}
+		h2{
+			padding:1%;
+			font-size: 1.5em;
+			color:goldenrod;
+		}
+		display: flex;
+		flex-direction: row;
+	}
 }
-
-
 
 /* 2. Content ================================= */
 

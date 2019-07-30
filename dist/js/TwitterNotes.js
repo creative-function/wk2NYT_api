@@ -82,4 +82,4 @@ var getBtn = document.querySelector('[name="get_timeline"]');
     }).then(handleGetResponse);
   }
 })();
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=TwitterNotes.js.map

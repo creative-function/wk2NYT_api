@@ -6,13 +6,14 @@
 	<style type="text/css">
 	.highlight { color: blue;}
 	</style>
+	<link rel="stylesheet" href="dist/css/main.css">
 </head>
 <body>
 
 	<div>
 		<form name="timeline">
 			Twitter handle: <input name="screen_name" type="text"/>
-			<button type="submit">Get Timeline</button>
+			<button name="get_timeline" type="submit">Get Timeline</button>
 			<div class="results">
 				<ul>
 				</ul>
@@ -25,7 +26,7 @@
 	<div>
 		<form name="search">
 			Query: <input name="q" type="text" />
-			<button type="submit">Quick Search</button>
+			<button name="qk_srch" type="submit">Quick Search</button>
 			<div class="results">
 				<ul>
 				</ul>
@@ -45,18 +46,24 @@
 				<option value="popular">Most popular</option>
 				<option value="recent">Most recent</option>
 			</select>
-			<button type="submit">Custom Search</button>
+			<button name="cstm_srch" type="submit">Custom Search</button>
 			<div class="results">
 				<ul>
 				</ul>
 			</div>
 		</form>
+		<section  id="search-results">
+			<div class="flex-title">
+				<h1 class="result-message"></h1>
+				<h2 class="search-term"></h2>
+			</div>
+			<hr>
+		</section>
 	</div>
 
 	<hr/>
 
-
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="js/week5.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script type="text/javascript" src="dist/js/main.js"></script>
 </body>
 </html>

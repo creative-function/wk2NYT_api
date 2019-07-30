@@ -72,8 +72,27 @@ table {
 	box-sizing: border-box;
 }
 
-body {
-	background: #ccc;
+#search-results p {
+	margin-top: 2%;
+}
+
+#search-results .flex-title {
+	margin-top: 2%;
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	        flex-direction: row;
+}
+
+#search-results .flex-title h1 {
+	font-size: 2em;
+}
+
+#search-results .flex-title h2 {
+	padding: 1%;
+	font-size: 1.5em;
+	color: goldenrod;
 }
 
 /* 2. Content ================================= */
