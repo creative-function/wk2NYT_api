@@ -133,7 +133,8 @@ gulp.task('image-compress', (done) => {
 // This task initializes the BrowserSync thing, which is what refreshes your page when you save a file
 gulp.task('start-browsersync', function(done) {
 	browserSync.init({ // start the browsersync mini-server
-		server: "./", // on the root of the project
+		// server: "./", // on the root of the project
+		proxy: "localhost:8888",//point at the MAMP service 
 	});
 	done()
 })
