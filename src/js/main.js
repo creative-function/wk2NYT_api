@@ -27,17 +27,21 @@
 
     function handleGetResponse(response){ //updates and displays new values in Value input
         console.log('response!', response)
-        
-        var articles =  data.response.docs;
+        //response = variable name for overall object
+        //go into response>.data>>response(thier object name)>>docs
+        var articles =  response.data.response.docs;
 
         
         for (var i= 0; i < articles.length; i++){
 
             let searchResult = document.createElement("div");
+            let searchText = document.createElement("p");
             //give it content
             let searchData = articles[i].headline.main;
-        
-            searchResult.appendChild(searchData);
+            
+            searchText.textContent = searchData;
+
+            searchResult.appendChild(searchText);
             document.body.appendChild(searchResult);
             console.log("articles added")
         }
