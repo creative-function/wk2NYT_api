@@ -1,75 +1,29 @@
 console.log("hello chello");
-const getBtn = document.querySelector('[name="get_timeline"]')
 
 ;(function(){ // ;( <-- starting it with ; seperates it from other code
-    console.log ('twitter-test1');
+    console.log ('twitter-notes');
     const API_URL_BASE= '/twitter-proxy.php'
-    const searchHandle = document.querySelector('[name="screen_name"]')
-    //const valueEl = document.querySelector('[name="value"]')
-    //const getBtn = document.querySelector('[name="get_timeline"]')
-    const qkSrchBtn = document.querySelector('[name="qk_srch"]')
-    const cstmSrchBtn = document.querySelector('[name="cstm_srch"]')
+    //you can query by <form> and target its children elements
+    const timelinelineFormEl = document.querySelector('form[name="timeline]')
+    
+    const quickSearchFormEl = document.querySelector('form[name="timeline]')
+    
+    //for cleanliness, its time to start declaring local variables where they belong
+    // all elements that have an event listener can go in here (all buttons)
+    function setupEventListeners(){
+        const timelineBtnEl = timelineformEl.querySelector('button')
+        timelineBtnEl.addEventListener('click', handleTimelinesearch)
 
-     /////////////GET REQUEST
+        // do the same for each bytton
+    }
 
-     function makeGetRequest(event){ //changes value and calls getData function 
+
+   //needs 3 handle"Timelinesearch"functions for the 3 different types of forms:
+
+    function handleTimelinesearch(event){ //changes value and calls getData function 
         //presents the browser from doing default behavior like refreshing/loading/ etc
         event.preventDefault()
-        const screenName = searchHandle.value
-        console.log('value of screenName: ', screenName)
-       getData(screenName)
-    }
-   
-    //when user clicks button, run this function 
-    getBtn.addEventListener('click', makeGetRequest)
-
-
-    function handleGetResponse(screenNameResult){ //updates and displays new values in Value input
-        console.log('response!', screenNameResult)
-                    //the tree to get to the value is inside response, inside data, inside another data, and there is the value. i.e  
-                    // response:
-                    //     data[
-                    //         data{
-                    //            value: "hello"
-                    //            id: "example"
-                    //         }
-                    //     ]
-        // const value = response.data.data.value
-        // //upatdae valueEl's value to = value variable 
-        // valueEl.value = value
-
-
-        //create a variable to access the specific object we are looking for
-        //submissions = all of the data objects from the screenNameResult response/get
-        var submissions =  screenNameResult.data;
-        //loop through all the screenNameResult.data arrays
-        for (var i= 0; i < submissions.length; i++){
-            //create div
-            let searchResult = document.createElement("div");
-            // create element for div to hold
-            let searchText = document.createElement("p");
-            //define a variable for each screenNameResult.data.text object 
-            let searchData = submissions[i].text;
-            // the <p> text content = an individual text object from array 
-            searchText.textContent = searchData;
-            //add the <p> to the <div>
-            searchResult.appendChild(searchText);
-            //add the <div> to the body
-                //document.body.appendChild(searchResult);
-            console.log("submissions added")
-            //add div to particular section
-            let resultDisplay = document.querySelector("#search-results");
-            resultDisplay.appendChild(searchResult);
-        }
-        //update H1 with info
-        let resultTitle = document.querySelector(".result-message");
-        let searchTerm = document.querySelector(".search-term");
-        resultTitle.innerText = "Timeline For: " + " ";
-        searchTerm.innerText = searchHandle.value;
-        //searchTerm.style.color ="blue";
-    }
-
-    function getData(screenName){ 
+        const screenName = timelinelineFormEl.querySelector("[name=screenname]")
         console.log('fetching with GET:' + screenName)
         //axios go to this url, lok at the paramets, match the one I want, then call this function 
         axios.get(API_URL_BASE,{
@@ -78,8 +32,51 @@ const getBtn = document.querySelector('[name="get_timeline"]')
                 op: 'user_timeline',
                 screen_name: screenName //my variable (key, seach-term, etc) 
             }
-        }).then(handleGetResponse)
+        }).then(handleTimelineSearchResults)
+    }
+   
+ //needs only 2 event listener response handlers for the 2 different types of api calls 
+   //the 3rd api call will get same data from the results/params of the other 2, doesn't need its own handler, nest it inside the proper one
+
+    function handleTimelineSearchResults(timelineResult){ //updates and displays new values 
+        console.log('timeline search results', timelineResult)
+       
+        //call function and pass these two items as its parameters
+        displayTweets(response.data, timelineformEl.querySelector('.results ul'))
+        //const tweetArray = response.data
+        //const resultsEl - timelineFormEl.querySelector('.results ul'))
+        //aka displayTweets(tweetarray, resultsel)
     }
 
+    //only need one of these to handle all results
+    
+    function displayTweets(tweetArray, resultsEl){ //parameters(which array / which results <div>) 
+                                                    //are defined in the handler function that calls this one. 
+        console.log("showing tweets,", tweetArray, resultsEl)
+
+        resultsEl.innerHTML = " "; //hacky shortcut to clear results div 
+
+        for(let i=0; i<tweetArray.lentgh; i++){
+            const li = document.createElement('li')
+            const p = document.createElement('p')
+            const tweet = tweetArray[i]
+            p.textContent = tweet.text
+            li.appendChild(p)
+            resultsEl.appendChild(li)
+        }
+    }
+
+    setupEventListeners()
 
 })()
+
+// reg expresisons help parse and normalize data 
+// reg ex linking:
+//create a reg expression that finds patterns (i.e all handles have @)
+//define the strings as urls and make them live
+//enable highlighting of keyword in results. (keyword.style.color = "")
+
+
+//types of reg ex
+// /abc/.test('abc')
+// abc.match(/abc/)
