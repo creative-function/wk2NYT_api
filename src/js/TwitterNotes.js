@@ -14,7 +14,7 @@ console.log("hello chello");
         const timelineBtnEl = timelineformEl.querySelector('button')
         timelineBtnEl.addEventListener('click', handleTimelinesearch)
 
-        // do the same for each bytton
+        // do the same for each button
     }
 
 
@@ -29,6 +29,7 @@ console.log("hello chello");
         axios.get(API_URL_BASE,{
             params: { 
                 //twitter_variables: my variables 
+
                 op: 'user_timeline',
                 screen_name: screenName //my variable (key, seach-term, etc) 
             }

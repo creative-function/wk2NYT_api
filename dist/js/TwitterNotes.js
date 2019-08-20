@@ -14,7 +14,7 @@ console.log("hello chello");
 
   function setupEventListeners() {
     var timelineBtnEl = timelineformEl.querySelector('button');
-    timelineBtnEl.addEventListener('click', handleTimelinesearch); // do the same for each bytton
+    timelineBtnEl.addEventListener('click', handleTimelinesearch); // do the same for each button
   } //needs 3 handle"Timelinesearch"functions for the 3 different types of forms:
 
 
