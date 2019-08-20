@@ -26,9 +26,7 @@ TABLE OF CONTENTS:
 
 #search-results{
 
-	p{
-		margin-top:2%;
-	}
+	
 	.flex-title{
 		margin-top:2%;
 		h1{
@@ -41,6 +39,28 @@ TABLE OF CONTENTS:
 		}
 		display: flex;
 		flex-direction: row;
+	}
+
+	.custResultBox{
+		width:90%;
+		margin:2%;
+		padding:2%;
+		border: 1px solid black;
+		display: flex;
+		flex-direction: column;
+
+
+		.resultTitle{
+			font-weight: bold;
+			margin:1%;
+			font-size:1.2em;
+		}
+
+		.custResult{
+			margin:1%;
+			font-size:1.1em;
+
+		}
 	}
 }
 

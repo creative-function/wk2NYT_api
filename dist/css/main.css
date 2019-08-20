@@ -72,10 +72,6 @@ table {
 	box-sizing: border-box;
 }
 
-#search-results p {
-	margin-top: 2%;
-}
-
 #search-results .flex-title {
 	margin-top: 2%;
 	display: -webkit-box;
@@ -93,6 +89,29 @@ table {
 	padding: 1%;
 	font-size: 1.5em;
 	color: goldenrod;
+}
+
+#search-results .custResultBox {
+	width: 90%;
+	margin: 2%;
+	padding: 2%;
+	border: 1px solid black;
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	        flex-direction: column;
+}
+
+#search-results .custResultBox .resultTitle {
+	font-weight: bold;
+	margin: 1%;
+	font-size: 1.2em;
+}
+
+#search-results .custResultBox .custResult {
+	margin: 1%;
+	font-size: 1.1em;
 }
 
 /* 2. Content ================================= */

@@ -135,19 +135,46 @@ var cstmSrchType = document.querySelector('[name="result_type"]');
   function handleCstmQueryResponse(cstmSrchResult) {
     //updates and displays new values in Value input
     console.log('cstmSrchResponse!', cstmSrchResult);
-    var cstmSrchEntries = cstmSearchResult.data;
+    var cstmSrchEntries = cstmSrchResult.data;
 
     for (var i = 0; i < cstmSrchEntries.length; i++) {
       //create div
-      var cstmEntryResult = document.createElement("div"); // create element for div to hold
+      var cstmEntryResult = document.createElement("div"); // create elements for div to hold
 
-      var cstmEntryText = document.createElement("p"); //define a variable for each cstmSrchResult.data.text object 
+      var cstmEntryText1 = document.createElement("p");
+      var cstmEntryText2 = document.createElement("p");
+      var cstmEntryText3 = document.createElement("p"); //and thier H1 lables
 
-      var cstmEntryData = cstmSrchEntries[i].name; // the <p> text content = an individual text object from array 
+      var TextLabel1 = document.createElement("h1");
+      var TextLabel2 = document.createElement("h1");
+      var TextLabel3 = document.createElement("h1"); //define a variable for each cstmSrchResult.data.text object 
 
-      cstmEntryText.textContent = cstmEntryData; //add the <p> to the <div>
+      var cstmEntryName = cstmSrchEntries[i].name;
+      var cstmEntryUserName = cstmSrchEntries[i].screen_name;
+      var cstmEntryDesc = cstmSrchEntries[i].description; // add class names for CSS styling
 
-      cstmEntryResult.appendChild(cstmEntryText); //add the <div> to the body
+      cstmEntryResult.classList.add("custResultBox");
+      TextLabel1.classList.add("resultTitle");
+      TextLabel2.classList.add("resultTitle");
+      TextLabel3.classList.add("resultTitle");
+      cstmEntryText1.classList.add("custResult");
+      cstmEntryText2.classList.add("custResult");
+      cstmEntryText3.classList.add("custResult"); // define H1 labels
+
+      TextLabel1.textContent = "Quick Match: ";
+      TextLabel2.textContent = "User Name: ";
+      TextLabel3.textContent = "Status: "; // the <p> text content = an individual text object from array 
+
+      cstmEntryText1.textContent = cstmEntryName;
+      cstmEntryText2.textContent = cstmEntryUserName;
+      cstmEntryText3.textContent = cstmEntryDesc; //add the <p> to the <div>
+
+      cstmEntryResult.appendChild(TextLabel1);
+      cstmEntryResult.appendChild(cstmEntryText1);
+      cstmEntryResult.appendChild(TextLabel2);
+      cstmEntryResult.appendChild(cstmEntryText2);
+      cstmEntryResult.appendChild(TextLabel3);
+      cstmEntryResult.appendChild(cstmEntryText3); //add the <div> to the body
       //document.body.appendChild(searchResult);
 
       console.log("custom entries added"); //add div to particular section
