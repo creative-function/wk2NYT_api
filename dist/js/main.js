@@ -10,7 +10,7 @@ var cstmSrchLimit = document.querySelector('[name="count"]');
 var cstmSrchType = document.querySelector('[name="result_type"]');
 
 (function () {
-  // ;( <-- starting it with ; seperates it from other code
+  // ;( <-- starting it with ; seperates it from other code34
   console.log('twitter-test2A,2B');
   var API_URL_BASE = '/twitter-proxy.php';
   var searchHandle = document.querySelector('[name="screen_name"]'); //const qkSrchInput = document.querySelector('[name="qkSrchInputField]')
@@ -109,13 +109,31 @@ var cstmSrchType = document.querySelector('[name="result_type"]');
       //create div
       var entryResult = document.createElement("div"); // create element for div to hold
 
-      var entryText = document.createElement("p"); //define a variable for each qkSrchResult.data.text object 
+      var srchEntryText = document.createElement("p");
+      var srchEntryText1 = document.createElement("p"); //define a variable for each qkSrchResult.data.text object 
 
-      var entryData = qkSrchEntries[i].text; // the <p> text content = an individual text object from array 
+      var entryData = qkSrchEntries[i].text;
+      var entryUser = qkSrchEntries[i].user.name; //create labels for each info 
 
-      entryText.textContent = entryData; //add the <p> to the <div>
+      var TextLabelA = document.createElement("label");
+      var TextLabelB = document.createElement("label"); // add class names for CSS styling
 
-      entryResult.appendChild(entryText); //add the <div> to the body
+      entryResult.classList.add("srchResultBox");
+      TextLabelA.classList.add("resultTitle");
+      TextLabelB.classList.add("resultTitle");
+      srchEntryText.classList.add("srchResult");
+      srchEntryText1.classList.add("srchResult"); //add label names to label
+
+      TextLabelA.textContent = "Status: ";
+      TextLabelB.textContent = "Tweeted by: "; // the <p> text content = an individual text object from array 
+
+      srchEntryText.textContent = entryData;
+      srchEntryText1.textContent = entryUser; //add the <p> to the <div>
+
+      entryResult.appendChild(TextLabelA);
+      entryResult.appendChild(srchEntryText);
+      entryResult.appendChild(TextLabelB);
+      entryResult.appendChild(srchEntryText1); //add the <div> to the body
       //document.body.appendChild(searchResult);
 
       console.log("entries added"); //add div to particular section
@@ -136,6 +154,8 @@ var cstmSrchType = document.querySelector('[name="result_type"]');
     //updates and displays new values in Value input
     console.log('cstmSrchResponse!', cstmSrchResult);
     var cstmSrchEntries = cstmSrchResult.data;
+    var resultDisplay = document.querySelector("#search-results");
+    resultDisplay.innerHTML = " ";
 
     for (var i = 0; i < cstmSrchEntries.length; i++) {
       //create div
@@ -145,23 +165,23 @@ var cstmSrchType = document.querySelector('[name="result_type"]');
       var cstmEntryText2 = document.createElement("p");
       var cstmEntryText3 = document.createElement("p"); //and thier H1 lables
 
-      var TextLabel1 = document.createElement("h1");
-      var TextLabel2 = document.createElement("h1");
-      var TextLabel3 = document.createElement("h1"); //define a variable for each cstmSrchResult.data.text object 
+      var TextLabel1 = document.createElement("label");
+      var TextLabel2 = document.createElement("label");
+      var TextLabel3 = document.createElement("label"); //define a variable for each cstmSrchResult.data.text object 
 
       var cstmEntryName = cstmSrchEntries[i].name;
       var cstmEntryUserName = cstmSrchEntries[i].screen_name;
       var cstmEntryDesc = cstmSrchEntries[i].description; // add class names for CSS styling
 
-      cstmEntryResult.classList.add("custResultBox");
+      cstmEntryResult.classList.add("srchResultBox");
       TextLabel1.classList.add("resultTitle");
       TextLabel2.classList.add("resultTitle");
       TextLabel3.classList.add("resultTitle");
-      cstmEntryText1.classList.add("custResult");
-      cstmEntryText2.classList.add("custResult");
-      cstmEntryText3.classList.add("custResult"); // define H1 labels
+      cstmEntryText1.classList.add("srchResult");
+      cstmEntryText2.classList.add("srchResult");
+      cstmEntryText3.classList.add("srchResult"); // define labels
 
-      TextLabel1.textContent = "Quick Match: ";
+      TextLabel1.textContent = "Name: ";
       TextLabel2.textContent = "User Name: ";
       TextLabel3.textContent = "Status: "; // the <p> text content = an individual text object from array 
 
@@ -179,9 +199,15 @@ var cstmSrchType = document.querySelector('[name="result_type"]');
 
       console.log("custom entries added"); //add div to particular section
 
-      var resultDisplay = document.querySelector("#search-results");
       resultDisplay.appendChild(cstmEntryResult);
-    }
+    } //update H1 with info
+
+
+    var resultTitle = document.querySelector(".result-message");
+    var cstmSearchTerm = document.querySelector(".search-term");
+    resultTitle.innerText = "Search Results For: " + " ";
+    cstmSearchTerm.innerText = cstmSrchInput.value;
+    cstmSearchTerm.style.color = "green";
   }
 
   function getUserData(screenName) {

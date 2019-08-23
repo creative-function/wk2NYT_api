@@ -72,8 +72,8 @@ table {
 	box-sizing: border-box;
 }
 
-#search-results .flex-title {
-	margin-top: 2%;
+.flex-title {
+	margin-top: 5%;
 	display: -webkit-box;
 	display: flex;
 	-webkit-box-orient: horizontal;
@@ -81,17 +81,17 @@ table {
 	        flex-direction: row;
 }
 
-#search-results .flex-title h1 {
+.flex-title h1 {
 	font-size: 2em;
 }
 
-#search-results .flex-title h2 {
+.flex-title h2 {
 	padding: 1%;
 	font-size: 1.5em;
 	color: goldenrod;
 }
 
-#search-results .custResultBox {
+#search-results .srchResultBox {
 	width: 90%;
 	margin: 2%;
 	padding: 2%;
@@ -103,15 +103,16 @@ table {
 	        flex-direction: column;
 }
 
-#search-results .custResultBox .resultTitle {
+#search-results .srchResultBox .resultTitle {
 	font-weight: bold;
 	margin: 1%;
 	font-size: 1.2em;
 }
 
-#search-results .custResultBox .custResult {
+#search-results .srchResultBox .srchResult {
 	margin: 1%;
 	font-size: 1.1em;
+	color: lightseagreen;
 }
 
 /* 2. Content ================================= */
