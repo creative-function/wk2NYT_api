@@ -10,7 +10,7 @@ var cstmSrchLimit = document.querySelector('[name="count"]');
 var cstmSrchType = document.querySelector('[name="result_type"]');
 
 (function () {
-  // ;( <-- starting it with ; seperates it from other codes
+  // ;( <-- starting it with ; seperates it from other code34
   console.log('twitter-test2A,2B');
   var API_URL_BASE = '/twitter-proxy.php';
   var searchHandle = document.querySelector('[name="screen_name"]'); //const qkSrchInput = document.querySelector('[name="qkSrchInputField]')
@@ -72,22 +72,13 @@ var cstmSrchType = document.querySelector('[name="result_type"]');
     //create a variable to access the specific object we are looking for
     //submissions = all of the data objects from the screenNameResult response/get
 
-    var resultDisplay = document.querySelector("#search-results");
-    resultDisplay.innerHTML = " ";
     var submissions = screenNameResult.data; //loop through all the screenNameResult.data arrays
 
     for (var i = 0; i < submissions.length; i++) {
       //create div
       var searchResult = document.createElement("div"); // create element for div to hold
 
-      var searchText = document.createElement("p"); //create labels for each info 
-
-      var TextLabelA = document.createElement("label"); // add class names for CSS styling
-
-      searchResult.classList.add("srchResultBox");
-      TextLabelA.classList.add("resultTitle"); //add label names to label
-
-      TextLabelA.textContent = "Status: "; //define a variable for each screenNameResult.data.text object 
+      var searchText = document.createElement("p"); //define a variable for each screenNameResult.data.text object 
 
       var searchData = submissions[i].text; // the <p> text content = an individual text object from array 
 
@@ -98,26 +89,21 @@ var cstmSrchType = document.querySelector('[name="result_type"]');
 
       console.log("submissions added"); //add div to particular section
 
-      var _resultDisplay = document.querySelector("#search-results");
-
-      _resultDisplay.appendChild(searchResult);
+      var resultDisplay = document.querySelector("#search-results");
+      resultDisplay.appendChild(searchResult);
     } //update H1 with info
 
 
     var resultTitle = document.querySelector(".result-message");
     var searchTerm = document.querySelector(".search-term");
     resultTitle.innerText = "Timeline For: " + " ";
-    searchTerm.innerText = searchHandle.value;
-    searchTerm.style.color = "blue";
+    searchTerm.innerText = searchHandle.value; //searchTerm.style.color ="blue";
   }
 
   function handleQueryResponse(SrchResult) {
     //updates and displays new values in Value input
     var qkSrchEntries = SrchResult.data.statuses;
     console.log('qkSrchResponse!', SrchResult); //loop through all the SrchResult.data arrays
-
-    var resultDisplay = document.querySelector("#search-results");
-    resultDisplay.innerHTML = " ";
 
     for (var i = 0; i < qkSrchEntries.length; i++) {
       //create div
@@ -152,9 +138,8 @@ var cstmSrchType = document.querySelector('[name="result_type"]');
 
       console.log("entries added"); //add div to particular section
 
-      var _resultDisplay2 = document.querySelector("#search-results");
-
-      _resultDisplay2.appendChild(entryResult);
+      var resultDisplay = document.querySelector("#search-results");
+      resultDisplay.appendChild(entryResult);
     } //update H1 with info
 
 
@@ -162,7 +147,7 @@ var cstmSrchType = document.querySelector('[name="result_type"]');
     var searchTerm = document.querySelector(".search-term");
     resultTitle.innerText = "Search Results For: " + " ";
     searchTerm.innerText = qkSrchInput.value;
-    searchTerm.style.color = "goldenrod";
+    searchTerm.style.color = "blue";
   }
 
   function handleCstmQueryResponse(cstmSrchResult) {

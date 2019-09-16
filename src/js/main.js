@@ -10,7 +10,7 @@ const cstmSrchLimit = document.querySelector('[name="count"]')
 const cstmSrchType = document.querySelector('[name="result_type"]')
 
 
-;(function(){ // ;( <-- starting it with ; seperates it from other codes
+;(function(){ // ;( <-- starting it with ; seperates it from other code34
     console.log ('twitter-test2A,2B');
     const API_URL_BASE= '/twitter-proxy.php'
     const searchHandle = document.querySelector('[name="screen_name"]')
@@ -76,8 +76,6 @@ const cstmSrchType = document.querySelector('[name="result_type"]')
 
         //create a variable to access the specific object we are looking for
         //submissions = all of the data objects from the screenNameResult response/get
-        let resultDisplay = document.querySelector("#search-results");
-        resultDisplay.innerHTML=" ";
         var submissions =  screenNameResult.data;
         //loop through all the screenNameResult.data arrays
         for (var i= 0; i < submissions.length; i++){
@@ -85,13 +83,6 @@ const cstmSrchType = document.querySelector('[name="result_type"]')
             let searchResult = document.createElement("div");
             // create element for div to hold
             let searchText = document.createElement("p");
-            //create labels for each info 
-            let TextLabelA = document.createElement("label");
-            // add class names for CSS styling
-            searchResult.classList.add("srchResultBox");
-            TextLabelA.classList.add("resultTitle");
-            //add label names to label
-            TextLabelA.textContent = "Status: ";
             //define a variable for each screenNameResult.data.text object 
             let searchData = submissions[i].text;
             // the <p> text content = an individual text object from array 
@@ -110,15 +101,13 @@ const cstmSrchType = document.querySelector('[name="result_type"]')
         let searchTerm = document.querySelector(".search-term");
         resultTitle.innerText = "Timeline For: " + " ";
         searchTerm.innerText = searchHandle.value;
-        searchTerm.style.color ="blue";
+        //searchTerm.style.color ="blue";
     }
 
     function handleQueryResponse(SrchResult){ //updates and displays new values in Value input
         var qkSrchEntries =  SrchResult.data.statuses;
         console.log('qkSrchResponse!', SrchResult)
         //loop through all the SrchResult.data arrays
-        let resultDisplay = document.querySelector("#search-results");
-        resultDisplay.innerHTML=" ";
         for (var i= 0; i < qkSrchEntries.length; i++){
             //create div
             let entryResult = document.createElement("div");
@@ -161,7 +150,7 @@ const cstmSrchType = document.querySelector('[name="result_type"]')
         let searchTerm = document.querySelector(".search-term");
         resultTitle.innerText = "Search Results For: " + " ";
         searchTerm.innerText = qkSrchInput.value;
-        searchTerm.style.color ="goldenrod";
+        searchTerm.style.color ="blue";
     
     }
 
